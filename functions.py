@@ -1,3 +1,6 @@
+from classes.Hero import Hero
+from classes.Game import Game
+
 def show_main_menu():
     print("1-новая игра")
     print("2-загрузить игру")
@@ -21,16 +24,6 @@ def menu_choose():
         return menu_choose()
     return choice
     
-def pocess_menu_choice(choice):
-    if choice == 1:
-        print("Начали новую игру")
-    elif choice == 2:
-        print("Загрузили игру")
-    elif choice == 3:
-        print("Настройки")
-    elif choice == 4:
-        print("Выход")
-    else:
-        print("Неверный пункт меню")
-        return pocess_menu_choice(choice)
+
+
 
