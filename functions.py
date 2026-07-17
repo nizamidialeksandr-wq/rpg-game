@@ -20,3 +20,17 @@ def menu_choose():
         print("Неверный пункт меню ввидите число от 1 до 4")
         return menu_choose()
     return choice
+    
+def pocess_menu_choice(choice):
+    if choice == 1:
+        print("Начали новую игру")
+    elif choice == 2:
+        print("Загрузили игру")
+    elif choice == 3:
+        print("Настройки")
+    elif choice == 4:
+        print("Выход")
+    else:
+        print("Неверный пункт меню")
+        return pocess_menu_choice(choice)
+

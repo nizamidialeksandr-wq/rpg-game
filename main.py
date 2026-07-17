@@ -1,11 +1,20 @@
 
 from functions import *
+
+
+
+
+
+
 def main():
-    print("Hello, World!")
-show_main_menu()
-menu_choose()
 
+    show_main_menu()
+    menu_choose()
+    menu_select = menu_choose()
+    pocess_menu_choice(menu_select)
+    
 
+main()
 
 
 
