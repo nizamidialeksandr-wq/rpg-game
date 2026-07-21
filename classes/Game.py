@@ -1,4 +1,8 @@
 
+
+from classes.Hero import Hero
+
+
 class Game:
     HEROES = [
         Hero("Воин",150,20,10,10),
@@ -15,8 +19,28 @@ class Game:
         self.is_running = True
 
     def new_game(self):
-        self.choose_player()
-        self.hero = Game.HEROES[playerID]
+        player_id = self.choose_player()
+        self.hero = Game.HEROES[player_id]
+        print(f"Вы выбрали персонажа: {self.hero.name}")
+
+
+    def choose_player(self):
+        print("выберите персонажа")
+        for i, hero in enumerate(Game.HEROES):
+            print(f"{i} —  {hero.name}")
+
+        while True:
+            choice = input("Выбери персонажа: ")
+            if not choice.isdigit():
+                print("Выбери верное действие! Повторите выбор")
+                continue
+
+            choice = int(choice)
+
+            if 0 <= choice < len(Game.HEROES):
+                return choice
+            else:
+                print("Выбери верное действие! Повторите выбор")
 
 
     def main_menu(self):
@@ -30,27 +54,4 @@ class Game:
 
     def load_game(self):
         pass
-
-def choose_player(HEROES):
-    print("выберите персонажа")
-    for i, hero in enumerate(HEROES):
-        print(f"{i} —  {hero.name}") 
-
-    choice = -1
-    while True:   
-        choice = input("Выбери действие: ")
-        if choice.isdigit():
-            choice = int(choice)
-        else:
-            print("Выбери верное действие! Повторите выбор")
-            continue
-
-        if choice >= 0 and choice < len(HEROES):
-            break
-        else:
-            print("Выбери верное действие! Повторите выбор")
-            continue
-
-    return choice
-
 

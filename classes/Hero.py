@@ -9,3 +9,11 @@ class Hero:
         self.exp = 0
         self.level = 0
         self.weapon = None
+    
+
+    def stats(self):
+        print(f"Имя: {self.name}")
+        print(f"Здоровье: {self.health}")
+        print(f"Урон: {self.damage}")
+        print(f"Крит: {self.crit_chance}")
+        print(f"Шанс промаха: {self.miss_chance}")

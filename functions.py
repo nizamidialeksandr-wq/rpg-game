@@ -1,5 +1,4 @@
-from classes.Hero import Hero
-from classes.Game import Game
+
 
 def show_main_menu():
     print("1-новая игра")
@@ -8,22 +7,24 @@ def show_main_menu():
     print("4-выход")
 
 def menu_choose():
-    
-    choice = (input("Выберите пункт меню: "))
+    choice = input("Выберите пункт меню: ")
+
 
     if choice.isdigit():
         choice = int(choice)
     else:
-        print("Неверный пункт меню ввидите число")
-        return menu_choose()
-    
-    if choice > 0 and choice <5:
+        print("Неверный пункт меню, введите число")
+        return menu_choose() 
+
+
+    if choice > 0 and choice < 5:
         print(f"выбрали пункт меню: {choice}")
     else:
-        print("Неверный пункт меню ввидите число от 1 до 4")
+        print("Неверный пункт меню, введите число от 1 до 4")
         return menu_choose()
     return choice
-    
+
+
 
 
 
