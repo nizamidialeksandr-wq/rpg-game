@@ -1,0 +1,12 @@
+{
+  "hero": {
+    "name": "Ассасин",
+    "health": 90,
+    "damage": 45,
+    "weapon": {
+      "damage": 20,
+      "name": "мушкет"
+    }
+  },
+  "name": "Rpg_game"
+}

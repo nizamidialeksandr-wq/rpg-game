@@ -1,5 +1,9 @@
 {
   "name": "Маг",
   "health": 80,
-  "damage": 45
+  "damage": 45,
+  "weapon": {
+    "damage": 20,
+    "name": "мушкет"
+  }
 }
