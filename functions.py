@@ -66,7 +66,10 @@ def player_turn(choice,hero,enemy):
         enemy.health -= damage
         print(f"{hero.name} нанёс {damage} урона по противнику!")
 
-
+    elif choice == "2":
+        heal = 30
+        hero.health += heal
+        print(f"Ты вылечился на {heal} хп. Теперь у тебя {hero.health} хп.")
     
 def random_crit():
     return round(random.uniform(1.5, 2), 1)
