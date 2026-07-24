@@ -1,3 +1,8 @@
+
+
+
+from classes.Weapon import Weapon
+
 class Hero:
     def __init__(self, name, health, damage, crit_chance, miss_chance):
         self.name = name
@@ -10,6 +15,10 @@ class Hero:
         self.level = 0
         self.weapon = None
     
+    def is_alive(self):
+        return self.health > 0
+
+
 
     def stats(self):
         print(f"Имя: {self.name}")
@@ -17,3 +26,43 @@ class Hero:
         print(f"Урон: {self.damage}")
         print(f"Крит: {self.crit_chance}")
         print(f"Шанс промаха: {self.miss_chance}")
+
+    def get_damage(self):
+        """Урон героя + бонус от оружия, если оно есть."""
+        damage = self.damage
+        if self.weapon:
+            damage = damage + self.weapon.damage
+        return damage
+
+    def to_dict(self):
+        """Объект → словарь. Вложенный класс пакуем его же to_dict."""
+        return {
+            "name": self.name,
+            "health": self.health,
+            "damage": self.damage,
+            "crit_chance": self.crit_chance,
+            "miss_chance": self.miss_chance,
+            "exp": self.exp,
+            "level": self.level,
+            # если оружия нет — кладём None, иначе упадёт на None.to_dict()
+            "weapon": self.weapon.to_dict() if self.weapon else None,
+        }
+
+    @classmethod
+    def from_dict(cls, data):
+        """Словарь → новый объект."""
+        hero = cls(
+            data["name"],
+            data["health"],
+            data["damage"],
+            data["crit_chance"],
+            data["miss_chance"],
+        )
+        hero.exp = data["exp"]
+        hero.level = data["level"]
+        # вложенный класс восстанавливаем его же from_dict
+        if data["weapon"]:
+            hero.weapon = Weapon.from_dict(data["weapon"])
+        return hero
+
+

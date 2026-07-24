@@ -1,3 +1,18 @@
+import random
+def choice_attack(): 
+    while True:
+        
+        print("1 — Удар")
+        print("2 — Лечение (+30 хп)")
+        choice = input("Выбери действие: ") 
+
+        if choice != "1" and choice != "2":
+            print("Выбери верное действие! Повторите выбор")
+            continue    
+        
+        return choice
+
+
 
 
 def show_main_menu():
@@ -24,7 +39,58 @@ def menu_choose():
         return menu_choose()
     return choice
 
+def chance(percent):
+    chance_random = random.randint(0,100)  
+    chance = 100 - percent
+       
+    return chance_random > chance
+
+def player_turn(choice,hero,enemy):
+    if choice == "1":
+
+        is_miss = chance(enemy.miss_chance)
+
+        if is_miss:
+            print ("вы не попали по противнику") 
+            return
+        is_crit = chance(hero.crit_chance)
+        if is_crit:
+            krit_coef = random_crit()
+        else:
+            krit_coef = 1
+
+        if krit_coef > 1:
+            print ("случился критический удар")
+
+        damage = (hero.damage) * krit_coef
+        enemy.health -= damage
+        print(f"{hero.name} нанёс {damage} урона по противнику!")
 
 
+    
+def random_crit():
+    return round(random.uniform(1.5, 2), 1)
+
+def  enemy_turn(hero,enemy):
+    print(f"\nХод {enemy.name}!")
+    is_miss = chance(hero.miss_chance)
+    
+    if is_miss:
+        print ("Противник не попал по вам") 
+        return
+        
+    is_crit = chance(enemy.crit_chance)
+    if is_crit:
+        krit_coef = random_crit()
+    else:
+        krit_coef = 1
+
+    if krit_coef > 1:
+        print ("случился критический удар")
+
+    damage = random.randint(enemy.damage_min, enemy.damage_max)
+    
+    print(f"{enemy.name} нанёс {damage * krit_coef} урона тебе!")
+    hero.health -= damage * krit_coef 
 
 
