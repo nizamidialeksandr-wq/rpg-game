@@ -2,6 +2,10 @@
 import json
 from pathlib import Path
 
+
+
+from classes.Product import Product
+from classes.Shop import Shop
 from classes.Hero import Hero
 from classes.Enemy import Enemy
 from functions import *
@@ -51,9 +55,17 @@ class Game:
             template.miss_chance,
         )
         print(f"Вы выбрали персонажа: {self.hero.name}")
+        self.hero.stats()
+
+
+
+
+
+
+
 
         self.level = 0
-        self.hero.stats()
+        self.init_shop()
         self.run()
 
     def choose_player(self):
@@ -129,6 +141,7 @@ class Game:
             print(f"Вам начислено {enemy.gold} золота . Текущий баланс: {self.hero.gold}")
             return True
         return False
+        
 
 
 
@@ -185,3 +198,15 @@ class Game:
         self.hero.stats()
         print(f"Следующий противник: {Game.ENEMIES[self.level].name}")
         self.run()
+
+    def init_shop(self):
+        self.shop = Shop([
+            Product("Меч", 60, 3),
+            Product("Аптечка", 70, 5),
+            Product("Бинт", 80, 15)
+        ]) 
+         
+        
+
+
+

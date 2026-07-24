@@ -1,14 +1,14 @@
 {
   "hero": {
     "name": "Ассасин",
-    "health": 83,
+    "health": 276,
     "damage": 45,
     "crit_chance": 35,
     "miss_chance": 40,
     "exp": 0,
     "level": 0,
     "weapon": null,
-    "gold": 100
+    "gold": 500
   },
-  "level": 1
+  "level": 5
 }
