@@ -8,7 +8,7 @@ class Enemy:
 
 
 
-    def __init__(self, name, health, damage_min, damage_max, crit_chance, miss_chance, exp):
+    def __init__(self, name, health, damage_min, damage_max, crit_chance, miss_chance, exp, gold):
         self.name = name
         self.health = health
         self.damage_min = damage_min
@@ -16,6 +16,7 @@ class Enemy:
         self.crit_chance = crit_chance
         self.miss_chance = miss_chance
         self.exp = exp
+        self.gold = gold
 
 
     def is_alive(self):

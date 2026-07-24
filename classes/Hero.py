@@ -14,6 +14,7 @@ class Hero:
         self.exp = 0
         self.level = 0
         self.weapon = None
+        self.gold = 0
     
     def is_alive(self):
         return self.health > 0
@@ -26,6 +27,8 @@ class Hero:
         print(f"Урон: {self.damage}")
         print(f"Крит: {self.crit_chance}")
         print(f"Шанс промаха: {self.miss_chance}")
+        print(f"Кол-во золота: {self.gold}")
+
 
     def get_damage(self):
         """Урон героя + бонус от оружия, если оно есть."""
@@ -46,6 +49,7 @@ class Hero:
             "level": self.level,
             # если оружия нет — кладём None, иначе упадёт на None.to_dict()
             "weapon": self.weapon.to_dict() if self.weapon else None,
+            "gold": self.gold
         }
 
     @classmethod
@@ -58,6 +62,7 @@ class Hero:
             data["crit_chance"],
             data["miss_chance"],
         )
+        hero.gold = data["gold"]
         hero.exp = data["exp"]
         hero.level = data["level"]
         # вложенный класс восстанавливаем его же from_dict
